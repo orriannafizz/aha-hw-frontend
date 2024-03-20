@@ -25,3 +25,9 @@ export interface UserStatics {
   todayLoginTimes: number;
   last7DaysAvgLoginTimes: number;
 }
+
+export interface IResetPasswordFormData {
+  oldPassword: string;
+  password: string;
+  confirmPassword: string;
+}
