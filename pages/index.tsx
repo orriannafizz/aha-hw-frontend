@@ -1,5 +1,5 @@
 import { User } from '@/@types';
-import axiosInstance from '../utils/axiosInstance';
+import axiosInstance from '@/utils/axiosInstance';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import LayoutWithHeader from '@/Layout/LayoutWithHeader';

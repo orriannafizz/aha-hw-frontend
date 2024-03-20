@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
-import axiosInstance from '../utils/axiosInstance';
+import axiosInstance from '@/utils/axiosInstance';
 import Cookies from 'js-cookie';
 import { ToastContainer, toast } from 'react-toastify';
 import Image from 'next/image';

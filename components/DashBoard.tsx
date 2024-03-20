@@ -1,4 +1,4 @@
-import axiosInstance from '../utils/axiosInstance';
+import axiosInstance from '@/utils/axiosInstance';
 import { useEffect, useState } from 'react';
 import { User, UserStatics } from '@/@types';
 import { getTimeStamp } from '@/utils/time';

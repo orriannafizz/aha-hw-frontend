@@ -2,7 +2,7 @@ import Image from 'next/image';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { ToastContainer } from 'react-toastify';
-import axiosInstance from '../utils/axiosInstance';
+import axiosInstance from '@/utils/axiosInstance';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
 import { ILoginFormData } from '@/@types';
