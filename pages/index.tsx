@@ -5,6 +5,10 @@ import { useEffect, useState } from 'react';
 import LayoutWithHeader from '@/Layout/LayoutWithHeader';
 import DashBoard from '@/components/DashBoard';
 
+/**
+ * Home page
+ * @return {JSX.Element}
+ */
 export function Index() {
   // Next.js router
   const router = useRouter();
@@ -38,12 +42,13 @@ export function Index() {
     router.push('/login');
   }
 
-  if (user)
-    return (
+  if (user) {
+return (
       <LayoutWithHeader>
         <DashBoard user={user} />
       </LayoutWithHeader>
     );
+}
 
   return <LayoutWithHeader>Nothing</LayoutWithHeader>;
 }

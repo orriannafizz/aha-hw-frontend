@@ -16,6 +16,10 @@ const passwordPattern = {
   specialChar: /[^A-Za-z0-9]/,
 };
 
+/**
+ * A page for sign up
+ * @return {JSX.Element}
+ */
 export default function SignUp() {
   // Next.js router
   const router = useRouter();

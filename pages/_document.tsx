@@ -1,6 +1,10 @@
 import { Html, Head, Main, NextScript } from 'next/document';
 
-export default function Document() {
+/**
+ * Custom Document component.
+ * @return {JSX.Element} The Document component.
+ */
+export default function Document(): JSX.Element {
   return (
     <Html lang='en'>
       <Head />
