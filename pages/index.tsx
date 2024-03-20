@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import LayoutWithHeader from '@/Layout/LayoutWithHeader';
 import DashBoard from '@/components/DashBoard';
+import VerifyEmail from '@/components/VerifyEmail';
 
 /**
  * Home page
@@ -41,6 +42,11 @@ export function Index() {
   if (!user) {
     router.push('/login');
   }
+
+  if (user?.isVerified === false) {
+    return <LayoutWithHeader><VerifyEmail user={user} /></LayoutWithHeader>;
+  }
+
 
   if (user) {
 return (
