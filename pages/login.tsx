@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 import { ILoginFormData } from '@/@types';
 import { consoleToastError } from '@/utils/toast.error';
 import Link from 'next/link';
+import Cookies from 'js-cookie';
 
 const Login = () => {
   // Next.js router
@@ -22,10 +23,14 @@ const Login = () => {
   // Submit form to login
   const onSubmit = async (data: ILoginFormData) => {
     try {
-      await axiosInstance.post('/auth/login', {
+      const res = await axiosInstance.post('/auth/login', {
         email: data.email,
         password: data.password,
       });
+
+      const { accessToken, refreshToken } = res.data.data;
+      Cookies.set('accessToken', accessToken);
+      Cookies.set('refreshToken', refreshToken);
       router.push('/');
     } catch (error) {
       consoleToastError(error);
