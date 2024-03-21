@@ -17,11 +17,10 @@ export default function useUser() {
       setUser(res.data.data);
     } catch (error) {
       setUser(null);
-      console.log(error);
     } finally {
       setIsLoaded(true);
     }
-  }, [setUser]);
+  }, []);
 
   useEffect(() => {
     handleGetUser();
