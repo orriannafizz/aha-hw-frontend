@@ -1,8 +1,5 @@
 {
-  "extends": [
-    "next/core-web-vitals",
-    "google"
-  ],
+  "extends": ["next/core-web-vitals", "google"],
   "rules": {
     "@typescript-eslint/interface-name-prefix": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
@@ -12,6 +9,7 @@
     "object-curly-spacing": "off",
     "indent": "off",
     "max-len": "off",
-    "space-before-function-paren": "off"
+    "space-before-function-paren": "off",
+    "operator-linebreak": "off"
   }
 }
