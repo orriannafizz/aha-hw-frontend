@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { ISignUpFormData } from '@/@types';
 import { consoleToastError } from '@/utils/toast.error';
+import Cookies from 'js-cookie';
 
 const passwordPattern = {
   minChar: /.{8,}/,
@@ -67,10 +68,15 @@ export default function SignUp() {
         password: data.password,
       });
 
-      await axiosInstance.post('/auth/login', {
+      const res = await axiosInstance.post('/auth/login', {
         email: data.email,
         password: data.password,
       });
+
+      const { accessToken, refreshToken } = res.data.data;
+      Cookies.set('accessToken', accessToken);
+      Cookies.set('refreshToken', refreshToken);
+      router.push('/');
 
       toast.success('Sign up successfully, redirecting to Landing Page...');
       router.push('/');

@@ -12,13 +12,11 @@ export function Index() {
   // Next.js router
   const router = useRouter();
 
-  // isLoaded state (fetching user data from the server)
-
   // User state
   const { user, isLoaded } = useUser();
 
   if (!isLoaded) {
-    return <>Loading...</>;
+    return <LayoutWithHeader>Loading...</LayoutWithHeader>;
   }
 
   if (!user) {
