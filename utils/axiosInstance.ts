@@ -31,16 +31,7 @@ axiosInstance.interceptors.response.use(undefined, async (error) => {
   ) {
     originalRequest._retry = true;
     try {
-      const res = await axiosInstance.post('/auth/refresh-token');
-      const data = res.data;
-      const accessToken = data.accessToken;
-      Cookies.set('accessToken', accessToken);
-
-      axiosInstance.defaults.headers.common[
-        'Authorization'
-      ] = `Bearer ${accessToken}`;
-
-      originalRequest.headers['Authorization'] = `Bearer ${accessToken}`;
+      await axiosInstance.post('/auth/refresh-token');
       return axiosInstance(originalRequest);
     } catch (refreshError) {
       return Promise.reject(refreshError);

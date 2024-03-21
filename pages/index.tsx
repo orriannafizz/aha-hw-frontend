@@ -18,7 +18,7 @@ export function Index() {
   const { user, isLoaded } = useUser();
 
   if (!isLoaded) {
-    return <LayoutWithHeader>Loading...</LayoutWithHeader>;
+    return <>Loading...</>;
   }
 
   if (!user) {

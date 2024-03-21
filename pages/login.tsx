@@ -3,7 +3,6 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { ToastContainer } from 'react-toastify';
 import axiosInstance from '@/utils/axiosInstance';
-import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
 import { ILoginFormData } from '@/@types';
 import { consoleToastError } from '@/utils/toast.error';
@@ -23,12 +22,10 @@ const Login = () => {
   // Submit form to login
   const onSubmit = async (data: ILoginFormData) => {
     try {
-      const res = await axiosInstance.post('/auth/login', {
+      await axiosInstance.post('/auth/login', {
         email: data.email,
         password: data.password,
       });
-      const accessToken = res.data.accessToken;
-      Cookies.set('accessToken', accessToken);
       router.push('/');
     } catch (error) {
       consoleToastError(error);

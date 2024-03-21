@@ -1,7 +1,6 @@
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import axiosInstance from '@/utils/axiosInstance';
-import Cookies from 'js-cookie';
 import { ToastContainer, toast } from 'react-toastify';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -68,13 +67,11 @@ export default function SignUp() {
         password: data.password,
       });
 
-      const loginRes = await axiosInstance.post('/auth/login', {
+      await axiosInstance.post('/auth/login', {
         email: data.email,
         password: data.password,
       });
 
-      const accessToken = loginRes.data.accessToken;
-      Cookies.set('accessToken', accessToken);
       toast.success('Sign up successfully, redirecting to Landing Page...');
       router.push('/');
     } catch (error) {
