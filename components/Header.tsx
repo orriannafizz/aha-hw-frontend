@@ -2,6 +2,7 @@ import { Disclosure } from '@headlessui/react';
 import axiosInstance from '@/utils/axiosInstance';
 import { useRouter } from 'next/router';
 import { classNames } from '@/utils/tailwind';
+import Cookies from 'js-cookie';
 
 const navigation = [
   { name: 'Dashboard', href: '/', current: false },
@@ -33,9 +34,9 @@ const Header = () => {
                           router.push(item.href);
                         }}
                         className={classNames(
-                          isCurrentPage(item.href) ?
-                            'bg-gray-900 text-white' :
-                            'text-gray-300 hover:bg-gray-700 hover:text-white',
+                          isCurrentPage(item.href)
+                            ? 'bg-gray-900 text-white'
+                            : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                           'px-3 py-2 rounded-md text-sm font-medium'
                         )}
                         aria-current={
@@ -54,7 +55,8 @@ const Header = () => {
                     className='p-1 text-gray-400 bg-gray-800 hover:text-white focus:outline-none'
                     onClick={async () => {
                       await axiosInstance.post('auth/logout');
-                      router.reload();
+                      Cookies.remove('accessToken');
+                      router.push('/login');
                     }}>
                     LOGOUT
                   </button>
