@@ -55,7 +55,6 @@ const Header = () => {
                     type="button"
                     className="p-1 text-gray-400 bg-gray-800 hover:text-white focus:outline-none"
                     onClick={async () => {
-                      await axiosInstance.post("auth/logout");
                       Cookies.remove("accessToken");
                       Cookies.remove("refreshToken");
                       router.push("/login");
