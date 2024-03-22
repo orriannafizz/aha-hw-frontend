@@ -7,6 +7,7 @@ import { IResetPasswordFormData } from '@/@types';
 import LayoutWithHeader from '@/Layout/LayoutWithHeader';
 import useUser from '@/hooks/useUser';
 import { consoleToastError } from '@/utils/toast.error';
+import Cookies from 'js-cookie';
 
 /**
  * a page to reset the password
@@ -62,6 +63,9 @@ export default function ResetPassword() {
         oldPassword: data.oldPassword,
         newPassword: data.password,
       });
+
+      Cookies.remove('accessToken');
+      Cookies.remove('refreshToken');
       toast.success('Password changed successfully. Please log in again.');
       router.push('/login');
     } catch (error) {
@@ -91,7 +95,7 @@ export default function ResetPassword() {
                   name='oldPassword'
                   type='password'
                   required
-                  className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
+                  className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-2'
                 />
                 {errors.oldPassword && (
                   <p className='mt-2 text-sm text-red-600'>
@@ -117,7 +121,7 @@ export default function ResetPassword() {
                 name='password'
                 type='password'
                 required
-                className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
+                className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-2'
               />
               <div className='mt-2'>
                 <p>Password must have:</p>
@@ -163,7 +167,7 @@ export default function ResetPassword() {
                 name='confirmPassword'
                 type='password'
                 required
-                className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
+                className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-2'
               />
               {errors.confirmPassword && (
                 <p className='mt-2 text-sm text-red-600'>
@@ -175,7 +179,7 @@ export default function ResetPassword() {
               <button
                 type='submit'
                 disabled={!isValid}
-                className='relative flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md group hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'>
+                className='relative flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md group hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 p-2'>
                 Change Password
               </button>
             </div>
