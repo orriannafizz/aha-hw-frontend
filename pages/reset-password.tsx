@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import axiosInstance from "../utils/axiosInstance";
 import { ToastContainer, toast } from "react-toastify";
@@ -7,16 +6,12 @@ import { IResetPasswordFormData } from "@/@types";
 import LayoutWithHeader from "@/Layout/LayoutWithHeader";
 import useUser from "@/hooks/useUser";
 import { consoleToastError } from "@/utils/toast.error";
-import Cookies from "js-cookie";
 
 /**
  * a page to reset the password
  * @return {JSX.Element}
  */
 export default function ResetPassword() {
-  // use Next.js router
-  const router = useRouter();
-
   // use state to store user data
   const { user } = useUser();
   const {
@@ -64,10 +59,7 @@ export default function ResetPassword() {
         newPassword: data.password,
       });
 
-      Cookies.remove("accessToken");
-      Cookies.remove("refreshToken");
-      toast.success("Password changed successfully. Please log in again.");
-      router.push("/login");
+      toast.success("Password changed successfully.");
     } catch (error) {
       consoleToastError(error);
     }
