@@ -56,6 +56,7 @@ const Header = () => {
                     onClick={async () => {
                       await axiosInstance.post('auth/logout');
                       Cookies.remove('accessToken');
+                      Cookies.remove('refreshToken');
                       router.push('/login');
                     }}>
                     LOGOUT
