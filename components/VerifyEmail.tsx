@@ -1,14 +1,14 @@
-import { ToastContainer, toast } from 'react-toastify';
-import axiosInstance from '@/utils/axiosInstance';
-import { User } from '@/@types';
-import { consoleToastError } from '@/utils/toast.error';
+import { ToastContainer, toast } from "react-toastify";
+import axiosInstance from "@/utils/axiosInstance";
+import { User } from "@/@types";
+import { consoleToastError } from "@/utils/toast.error";
 
 /**
  * component for verifying email
  * @param {User} { user }
  * @return {JSX.Element}
  */
-function VerifyEmail ({ user }: { user: User }) {
+function VerifyEmail({ user }: { user: User }) {
   return (
     <>
       <ToastContainer />
@@ -33,9 +33,9 @@ function VerifyEmail ({ user }: { user: User }) {
             <button
               onClick={() => {
                 axiosInstance
-                  .post('/users/send-verify-email')
+                  .post("/users/send-verify-email")
                   .then((res) => {
-                    toast.success('Verification email sent');
+                    toast.success("Verification email sent");
                   })
                   .catch((error) => {
                     consoleToastError(error);
@@ -50,6 +50,6 @@ function VerifyEmail ({ user }: { user: User }) {
       </div>
     </>
   );
-};
+}
 
 export default VerifyEmail;

@@ -1,17 +1,17 @@
-import axiosInstance from '@/utils/axiosInstance';
-import { useEffect, useState } from 'react';
-import { User, UserStatics } from '@/@types';
-import { getTimeStamp } from '@/utils/time';
+import axiosInstance from "@/utils/axiosInstance";
+import { useEffect, useState } from "react";
+import { User, UserStatics } from "@/@types";
+import { getTimeStamp } from "@/utils/time";
 
 const DashBoard = ({ user }: { user: User }) => {
   const [userStatics, setUserStatics] = useState<UserStatics | undefined>(
-    undefined
+    undefined,
   );
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axiosInstance.get('users/statics');
+        const res = await axiosInstance.get("users/statics");
         setUserStatics(res.data.data);
       } catch (error) {
         console.log(error);
@@ -21,17 +21,17 @@ const DashBoard = ({ user }: { user: User }) => {
   }, []);
   return (
     <>
-      <div className='min-h-full'>
-        <header className='bg-white shadow-sm'>
-          <div className='px-4 py-4 mx-auto max-w-7xl sm:px-6 lg:px-8'>
-            <h1 className='text-lg font-semibold leading-6 text-gray-900'>
+      <div className="min-h-full">
+        <header className="bg-white shadow-sm">
+          <div className="px-4 py-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <h1 className="text-lg font-semibold leading-6 text-gray-900">
               Hi! {user.username}
             </h1>
           </div>
         </header>
         <main>
-          <div className='py-6 mx-auto font-semibold max-w-7xl sm:px-6 lg:px-8'>
-            <h2 className='text-lg font-semibold leading-6 text-gray-900'>
+          <div className="py-6 mx-auto font-semibold max-w-7xl sm:px-6 lg:px-8">
+            <h2 className="text-lg font-semibold leading-6 text-gray-900">
               Your Status:
             </h2>
             <ul>
@@ -46,8 +46,8 @@ const DashBoard = ({ user }: { user: User }) => {
               </li>
             </ul>
           </div>
-          <div className='py-6 mx-auto font-semibold max-w-7xl sm:px-6 lg:px-8'>
-            <h2 className='text-lg font-semibold leading-6 text-gray-900'>
+          <div className="py-6 mx-auto font-semibold max-w-7xl sm:px-6 lg:px-8">
+            <h2 className="text-lg font-semibold leading-6 text-gray-900">
               User Statics:
             </h2>
             <ul>

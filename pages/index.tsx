@@ -1,9 +1,9 @@
-import { useRouter } from 'next/router';
-import LayoutWithHeader from '@/Layout/LayoutWithHeader';
-import DashBoard from '@/components/DashBoard';
-import VerifyEmail from '@/components/VerifyEmail';
-import useUser from '@/hooks/useUser';
-import Loading from '@/components/Loading';
+import { useRouter } from "next/router";
+import LayoutWithHeader from "@/Layout/LayoutWithHeader";
+import DashBoard from "@/components/DashBoard";
+import VerifyEmail from "@/components/VerifyEmail";
+import useUser from "@/hooks/useUser";
+import Loading from "@/components/Loading";
 
 /**
  * Home page
@@ -21,7 +21,7 @@ export function Index() {
   }
 
   if (!user) {
-    router.push('/login');
+    router.push("/login");
   }
 
   if (user?.isVerified === false) {

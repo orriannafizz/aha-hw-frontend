@@ -1,5 +1,5 @@
-import { AxiosError } from 'axios';
-import { toast } from 'react-toastify';
+import { AxiosError } from "axios";
+import { toast } from "react-toastify";
 
 /**
  * @param {unknown} error the error from backend
@@ -11,6 +11,6 @@ export function consoleToastError(error: unknown) {
   if (data) {
     toast.error(`Error: ${data.message}`);
   } else {
-    toast.error('An unexpected error occurred.');
+    toast.error("An unexpected error occurred.");
   }
 }

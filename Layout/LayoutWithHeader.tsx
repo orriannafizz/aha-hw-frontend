@@ -1,4 +1,4 @@
-import Header from '@/components/Header';
+import Header from "@/components/Header";
 
 const LayoutWithHeader = ({
   children,
@@ -8,7 +8,7 @@ const LayoutWithHeader = ({
   return (
     <>
       <Header />
-      <div className='min-h-full'>{children}</div>
+      <div className="min-h-full">{children}</div>
     </>
   );
 };

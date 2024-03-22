@@ -1,5 +1,5 @@
-import axios from 'axios';
-import Cookies from 'js-cookie';
+import axios from "axios";
+import Cookies from "js-cookie";
 
 const axiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BACKEND_URL,
@@ -8,7 +8,7 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   (config) => {
-    const token = Cookies.get('accessToken');
+    const token = Cookies.get("accessToken");
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -16,7 +16,7 @@ axiosInstance.interceptors.request.use(
   },
   (error) => {
     return Promise.reject(error);
-  }
+  },
 );
 
 axiosInstance.interceptors.response.use(
@@ -33,21 +33,21 @@ axiosInstance.interceptors.response.use(
       originalRequest._retry = true;
 
       try {
-        const res = await axiosInstance.post('/auth/refresh-token');
+        const res = await axiosInstance.post("/auth/refresh-token");
         if (res.status === 200 && res.data.data) {
           const { accessToken } = res.data.data;
-          Cookies.set('accessToken', accessToken);
-          originalRequest.headers['Authorization'] = `Bearer ${accessToken}`;
+          Cookies.set("accessToken", accessToken);
+          originalRequest.headers["Authorization"] = `Bearer ${accessToken}`;
           return axiosInstance(originalRequest);
         }
       } catch (refreshError) {
-        console.error('Failed to refresh token:', refreshError);
+        console.error("Failed to refresh token:", refreshError);
         return Promise.reject(refreshError);
       }
     }
 
     return Promise.reject(error);
-  }
+  },
 );
 
 export default axiosInstance;
