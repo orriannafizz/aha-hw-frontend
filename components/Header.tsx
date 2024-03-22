@@ -1,5 +1,4 @@
 import { Disclosure } from "@headlessui/react";
-import axiosInstance from "@/utils/axiosInstance";
 import { useRouter } from "next/router";
 import { classNames } from "@/utils/tailwind";
 import Cookies from "js-cookie";
